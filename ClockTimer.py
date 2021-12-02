@@ -3,14 +3,15 @@ import time
 currentTime = time.strftime("%H:%M:%S")
 
 print("Current Time is:", currentTime)
-addTime = int(input("Set a timer for how many minutes?:"))
+addTime = float(input("Set a timer for how many minutes?:"))
 
-currentTimeInt = int(time.strftime("%H%M%S"))
-timerEnd = (currentTimeInt + (addTime*100))
+currentTimeInt = float(time.strftime("%H%M%S"))
+timerEnd = (currentTimeInt + (addTime*100) - 1)
 
 print("Timer set for", addTime, "minutes!")
 
-while(True):
-    if(int(time.strftime("%H%M%S")) >= timerEnd):
-        print("BEEP BEEP! Your", addTime, "minutes are over.")
-        break
+while(int(time.strftime("%H%M%S")) < timerEnd):
+    time.sleep(1)
+
+print("Your", addTime, "minutes are over!")
+x=input()
